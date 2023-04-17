@@ -1,0 +1,116 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #e5e5e5;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .header {
+    background-color: #2f80ed;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .header__title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .error {
+    color: #c50000;
+    margin: 1rem 0;
+  }
+  
+  /* Form styles */
+  .form {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form__group {
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .form__label {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #4f4f4f;
+    font-weight: 600;
+  }
+  
+  .form__input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f7f7f7;
+    font-size: 1.2rem;
+    color: #4f4f4f;
+    margin-top: 0.5rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form__input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form__checkbox-label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form__checkbox {
+    margin-right: 2rem;
+    transform: scale(2);
+  }
+  
+  .form__checkbox-text {
+    font-size: 1.5rem;
+    color: #4f4f4f;
+    font-weight: 400;
+  }
+  
+  .button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: #2f80ed;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #2b73c7;
+  }
+  

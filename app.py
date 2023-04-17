@@ -1,3 +1,4 @@
+import json
 from flask import Flask, request, render_template
 import requests
 
@@ -25,8 +26,6 @@ def index():
         response = requests.get(url)
         data = response.json()
 
-        print(data)
-
         # Extract 10 day forecast data
         forecast = []
         for i in range(len(data['hourly']['time'])):
@@ -36,8 +35,12 @@ def index():
             uv = data['hourly']['uv_index'][i]
             forecast.append({'date': date, 'temp': temp, 'precip': precip, 'uv': uv})
 
+        location = location.title()
+        print(location)
+
+        # print(forecast)
         # Render forecast template with forecast data
-        return render_template('forecast.html', forecast=forecast)
+        return render_template('forecast.html', location=location, forecast=json.dumps(forecast))
 
     # Render home template if no location submitted
     return render_template('index.html')

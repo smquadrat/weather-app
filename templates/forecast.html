@@ -3,89 +3,23 @@
   <head>
     <title>Weather Forecast</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='forecast.js') }}"></script>
   </head>
   <body>
-    <h1>Weather Forecast</h1>
-    <h2>Temperature Chart</h2>
+    <h1>10-Day Weather Forecast for {{ location|safe }}</h1>
+    <h2>Temperature (ºF)</h2>
     <canvas id="temperature-chart"></canvas>
 
-    <h2>Precipitation Chart</h2>
+    <h2>Precipitation</h2>
     <canvas id="precipitation-chart"></canvas>
 
-    <h2>UV Chart</h2>
+    <h2>UV Index</h2>
     <canvas id="uv-chart"></canvas>
 
     <script>
-      var dates = [];
-      var temps = [];
-      var precip = [];
-      var uv = [];
-
-      {% for day in forecast %}
-        dates.push('{{ day.date }}');
-        temps.push({{ day.temp }});
-        precip.push({{ day.precip }});
-        uv.push({{ day.uv }});
-      {% endfor %}
-
-      var tempChart = new Chart(document.getElementById('temperature-chart'), {
-        type: 'line',
-        data: {
-          labels: dates,
-          datasets: [{
-            label: 'Temperature',
-            data: temps,
-            fill: false,
-            borderColor: 'red'
-          }]
-        },
-        options: {
-          responsive: true,
-          title: {
-            display: true,
-            text: 'Temperature Forecast'
-          }
-        }
-      });
-
-      var precipChart = new Chart(document.getElementById('precipitation-chart'), {
-        type: 'bar',
-        data: {
-          labels: dates,
-          datasets: [{
-            label: 'Precipitation',
-            data: precip,
-            backgroundColor: 'blue'
-          }]
-        },
-        options: {
-          responsive: true,
-          title: {
-            display: true,
-            text: 'Precipitation Forecast'
-          }
-        }
-      });
-
-      var uvChart = new Chart(document.getElementById('uv-chart'), {
-        type: 'line',
-        data: {
-          labels: dates,
-          datasets: [{
-            label: 'UV',
-            data: uv,
-            fill: false,
-            borderColor: 'green'
-          }]
-        },
-        options: {
-          responsive: true,
-          title: {
-            display: true,
-            text: 'UV Forecast'
-          }
-        }
-      });
+      var forecast = JSON.parse('{{ forecast|safe }}');
+      console.log(forecast);
+      createCharts(forecast);
     </script>
   </body>
 </html>

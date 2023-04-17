@@ -1,24 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Weather Forecast</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Weather Forecast</h1>
-    {% if error %}
-      <p>{{ error }}</p>
-    {% endif %}
-    <form action="/" method="post">
-      <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required><br><br>
-      <label for="temp">Temperature</label>
-      <input type="checkbox" id="temp" name="params[]" value="temp"><br>
-      <label for="precipitation">Precipitation</label>
-      <input type="checkbox" id="precipitation" name="params[]" value="precipitation"><br>
-      <label for="uv">UV Index</label>
-      <input type="checkbox" id="uv" name="params[]" value="uv"><br>
-      <br>
-      <input type="submit" value="Get Forecast">
-    </form>
+    <header class="header">
+      <h1 class="header__title">Weather Forecast</h1>
+    </header>
+    <main class="main">
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <form action="/" method="post" class="form">
+        <div class="form__group">
+          <label for="location" class="form__label">Location</label>
+          <input type="text" id="location" name="location" class="form__input" required>
+        </div>
+        <div class="form__group">
+          <label for="temp" class="form__checkbox-label">
+            <input type="checkbox" id="temp" name="params[]" value="temp" checked class="form__checkbox">
+            <span class="form__checkbox-text">Temperature</span>
+          </label>
+        </div>
+        <div class="form__group">
+          <label for="precipitation" class="form__checkbox-label">
+            <input type="checkbox" id="precipitation" name="params[]" value="precipitation" checked class="form__checkbox">
+            <span class="form__checkbox-text">Precipitation</span>
+          </label>
+        </div>
+        <div class="form__group">
+          <label for="uv" class="form__checkbox-label">
+            <input type="checkbox" id="uv" name="params[]" value="uv" checked class="form__checkbox">
+            <span class="form__checkbox-text">UV Index</span>
+          </label>
+        </div>
+        <button type="submit" class="button">Get Forecast</button>
+      </form>
+    </main>
   </body>
 </html>
